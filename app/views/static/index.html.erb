@@ -1,0 +1,19 @@
+<h1>Bienvenue sur mon super site de gossip !</h1>
+<br>
+<a href="new_gossip" class="btn btn-primary">👉 Tu peux en créer un nouveau</a>
+<br>
+<br>
+<h2>Jette un oeil aux potins ci-dessous :</h2>
+<br>
+<div class="cards">
+  <% Gossip.all.each do |gossip| %>
+    <div class="card m-3 border-primary rounded">
+      <div class="card-body">
+        <h5 class="card-title"><%= gossip.title %></h5>
+        <h6 class="card-subtitle m-3 text-muted">Gossip n°<%= Gossip.all.index(gossip) + 1 %>, de <%= gossip.user.first_name %></h6>
+        <%= link_to "Lien du gossip", gossip_path(Gossip.all.index(gossip) + 1), :class => "card-link"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+

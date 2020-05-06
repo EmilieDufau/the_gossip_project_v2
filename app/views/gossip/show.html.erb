@@ -1,0 +1,16 @@
+<div class="container py-3 text-center">
+  <h1>PAGE POTIN</h1>
+  <br>
+  <div class="card py-3">
+    <h2 class="card-title">Voici la page du potin n°<%= the_id = params['id'] %></h2>
+    <div class="card-body text-left">
+      <div class="card-text">
+        <p><strong>Son auteur : </strong><%= Gossip.find(the_id.to_i).user.first_name %></p>
+        <p><strong>Le contenu du potin : </strong><%= Gossip.find(the_id.to_i).content %></p>
+      </div>
+      <a href="<%=the_id%>/edit" class="btn btn-primary btn-sm">Edite le potin</a>
+    </div>
+  </div>
+  <br>
+  <a href="/">Retourne à la page des potins</a>
+</div>
