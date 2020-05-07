@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_30_235818) do
+ActiveRecord::Schema.define(version: 2020_05_07_153446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,18 @@ ActiveRecord::Schema.define(version: 2020_04_30_235818) do
 
   create_table "tags", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "userconnects", force: :cascade do |t|
+    t.string "username"
+    t.string "email"
+    t.boolean "confirmed", default: false
+    t.string "confirmation_token"
+    t.string "password_digest"
+    t.string "firstname"
+    t.string "lastname"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

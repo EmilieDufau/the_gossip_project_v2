@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+
   root 'static#index'
   get 'team', to: 'static#team'
   get 'contact', to: 'static#contact'
@@ -9,5 +11,7 @@ Rails.application.routes.draw do
   get 'new_gossip', to: 'gossip#new_gossip'
   resources :gossip
   resources :user
+
+
 end
 

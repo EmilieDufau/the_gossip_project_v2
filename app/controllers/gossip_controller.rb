@@ -1,7 +1,5 @@
 class GossipController < ApplicationController
-  def edit
-  end
-
+  
   def index
   	@gossips = Gossip.all
   end
@@ -15,15 +13,35 @@ class GossipController < ApplicationController
 
   end
 
-
+ # Display a view to create a gossip
   def new_gossip
+    @gossip = Gossip.new(title: "", content: "", user: User.last)
   end
 
+# Create a new gossip
+  def create
+    @gossip = Gossip.new(title: params[:title],
+                         content: params[:content],
+                         user: User.find(params[:user]))
+
+    if @gossip.save
+      flash[:success] = "Le potin a été créé avec succès."
+      redirect_to gossips_path
+    else
+      render 'new'
+    end
+  end
+
+# Edit an existing gossip
   def update
-	@gossip = Gossip.find(params[:id])
-   	gossip_params = params.require(:post).permit(:name, :content)
-   	@gossip.update(gossip_params)
-   	redirect_to gossip_path
+	@gossip = Gossip.find_by(title: params[:title])
+
+    if @gossip.update(title: params[:title], content: params[:content], user: User.find(params[:user]))
+      flash[:success] = "Le potin a été mis à jour avec succès."
+      redirect_to gossips_path
+    else
+      render 'edit'
+    end
   end
 
 end

@@ -1,0 +1,17 @@
+<div class="container py-3 text-center">
+  <h1>Profile utilisateur</h1>
+  <br>
+  <div class="card py-3">
+    <h2 class="card-title">Voici les informations de :</h2>
+    <div class="card-body text-left">
+      <div class="card-text">
+        <p><strong>Son prénom : </strong><%= User.find(params[:id]).first_name %></a></p>
+        <p><strong>Son nom : </strong><%= User.find(params[:id]).last_name %></a></p>
+        <p><strong>Sa description : </strong><%= User.find(params[:id]).description %></a></p>
+        <p><strong>Son email : </strong><%= User.find(params[:id]).email %></p>
+        <p><strong>Son age : </strong><%= User.find(params[:id]).age %></p>
+        <p><strong>Le nom de sa ville : </strong>
+          <%= link_to User.find(params[:id]).city.name, city_path(User.find(params[:id]).city.id) %></p>
+      </div>
+    </div>
+  </div>
