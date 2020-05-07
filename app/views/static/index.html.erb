@@ -5,15 +5,22 @@
 <br>
 <h2>Jette un oeil aux potins ci-dessous :</h2>
 <br>
+
 <div class="cards">
   <% Gossip.all.each do |gossip| %>
+
     <div class="card m-3 border-primary rounded">
       <div class="card-body">
-        <h5 class="card-title"><%= gossip.title %></h5>
-        <h6 class="card-subtitle m-3 text-muted">Gossip n°<%= Gossip.all.index(gossip) + 1 %>, de <%= gossip.user.first_name %></h6>
-        <%= link_to "Lien du gossip", gossip_path(Gossip.all.index(gossip) + 1), :class => "card-link"%>
+        <h4 class="card-title"><%= gossip.title %></h4>
+
+        <h5 class="card-subtitle m-3 text-muted">Gossip n°<%= Gossip.all.index(gossip) + 1 %>, de <%= gossip.user.first_name %></h5>
+
+        <a href="<%= gossip_path(gossip.id)%>" class="btn btn-primary">Lire le gossip</a>
+      
       </div>
     </div>
+
   <% end %>
+
 </div>
 

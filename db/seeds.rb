@@ -23,7 +23,7 @@ end
 # seed tags
 10.times do
   Tag.create(
-    title: "##{Faker::Lorem.word}"
+    title: "#{Faker::Lorem.word}"
   )
 end
 

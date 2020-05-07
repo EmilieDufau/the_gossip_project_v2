@@ -2,16 +2,26 @@
 <h1 class="py-3">Edite le potin n°<%= the_id %></h1>
 <br>
 <div class="card p-3 rounded">
-  <p class="text-left"><strong>La LDP : </strong> <%= Gossip.find(the_id.to_i).user.first_name %></p>
+  <p class="text-left"><strong>La LDP : </strong> <%= link_to Gossip.find(the_id.to_i).user.first_name, user_path(Gossip.find(the_id.to_i).user.id)%></p>
   <p class="text-left"><strong>L'ancien contenu du potin : </strong><%= Gossip.find(the_id.to_i).content %></p>
 </div>
 <br>
 <br>
 <p><strong>Change ton potin via le formulaire ci-dessous 👇</strong></p>
-<form action='/' method='GET' class="form-group p-5 border rounded">
-  Quel est ton nom, langue de vipère ? <input type='text' name='gossip_author_new' class="form-control" placeholder="FDP"/><br/>
-  Change le potin : <input type='text' name='gossip_content_new' class="form-control" placeholder="Vays-y, crache ton venin!" /><br/>
-  <input type='hidden' name='the_id' value='<%= params['id'] %>'/>
-  <input type='submit' class="btn btn-primary w-100"/>
-</form>
+
+<%= form_for @gossip do |f| %>
+    <div class="form-group">
+      <label> Titre du potin</label>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <label> Contenu du potin</label>
+      <%= f.text_area :content, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+    <button type="submit" class="btn" style="background-color: #ffc0cb">Modifier le potin</button>
+    </div>
+  <% end %>
+
+
 <a href="/">Retourne à la page des potins</a>

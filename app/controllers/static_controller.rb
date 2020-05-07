@@ -3,6 +3,7 @@ class StaticController < ApplicationController
   end
 
   def index
+
   end
 
   def team
