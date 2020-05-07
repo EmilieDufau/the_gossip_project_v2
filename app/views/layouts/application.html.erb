@@ -16,11 +16,25 @@
       <div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="team">Team</a>
+            <a class="nav-link" href="team">The Team</a>
           </li>
+
           <li class="nav-item">
             <a class="nav-link" href="contact">Contact</a>
           </li>
+
+          <li class="nav-item">
+            <% if (session[:user_id])%>
+            <li class="nav-item">
+              <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+            </li> 
+            <%else%>
+            <li class="nav-item">
+              <a class="nav-link" href="/sessions/new">Login</a>
+            </li>   
+            <%end%>
+          </li>
+
         </ul>
       </div>
     </nav>

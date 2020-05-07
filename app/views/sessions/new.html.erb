@@ -1,0 +1,28 @@
+<p id=”alert”><%= alert %></p>
+<h1>Login</h1>
+<br><br>
+
+<div class="container">
+
+  <p id="profile-name" class="profile-name-card"></p>
+     <%= form_with url: sessions_path, class:"form-signin", local: true do |f| %>
+     <span id="reauth-email"></span>
+
+     <div class=”field”>
+        <%= f.email_field :email, class:"form-control", placeholder:"Email", autofocus: true%>
+		</div>
+<br>
+		<div class=”field”>
+        <%= f.password_field :password, class:"form-control", placeholder:"Password", autofocus: true%>
+    </div>
+    
+    <div id="remember" class="checkbox">
+<br><br>
+    </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+    <%end%>
+        
+
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %>"><%= value %></div>
+<% end %> 

@@ -8,6 +8,9 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.integer :age
       t.references :city, index: true
       t.timestamps null: false
+
+      t.string :email
+      t.string :password_digest
     end
   end
 end
